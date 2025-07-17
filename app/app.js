@@ -1,4 +1,3 @@
-// app.js
 let dealId = null;
 let exchangeRateNBU = null;
 let exchangeRateDeal = null;
@@ -66,7 +65,7 @@ function getExchangeRate() {
       exchangeRateNBU = nbuData?.[0]?.rate || 0;
       document.getElementById("nbu-rate").textContent = exchangeRateNBU.toFixed(2);
       localStorage.setItem("last_nbu_rate", exchangeRateNBU);
-      log(`✅ Отримано курс НБУ: ${exchangeRateNBU}`);
+      log(`Отримано курс НБУ: ${exchangeRateNBU}`);
 
       return ZOHO.CRM.API.getRecord({ Entity: "Deals", RecordID: dealId });
     })
@@ -82,12 +81,12 @@ function getExchangeRate() {
       }
     })
     .catch(err => {
-      log("❌ Не вдалося отримати курс.");
+      log("Не вдалося отримати курс.");
     });
 }
 
 function updateDealRate() {
-  log("🔄 Клік по кнопці оновлення");
+  log("Клік по кнопці оновлення");
   document.getElementById("update-btn").disabled = true;
   document.getElementById("status").textContent = "Оновлення...";
 
@@ -131,21 +130,18 @@ function createHistoryRecord(rate, diffPercent) {
       
   };
 
-  console.log("📤 Створюємо запис історії:", payload);
-
   ZOHO.CRM.API.insertRecord({
     Entity: historyModule,
     APIData: payload,
     Trigger: ["workflow"]
   }).then(resp => {
-    console.log("✅ Відповідь insertRecord:", resp);
     log("📥 Запис збережено в історії");
     setTimeout(() => {
       loadHistory();
     }, 1500);
   }).catch(err => {
-    console.error("❌ Помилка запису історії:", err);
-    log("❌ Помилка при збереженні історії курсу");
+    console.error("Помилка запису історії:", err);
+    log("Помилка при збереженні історії курсу");
   });
 }
 
@@ -155,7 +151,6 @@ function loadHistory() {
     Type: "criteria",
     Query: `(Deal:equals:${dealId})` 
   }).then(resp => {
-    console.log("📥 Отримані записи історії:", resp);
 
       const data = resp?.data || [];
       const sorted = data.sort((a, b) => new Date(b.Date) - new Date(a.Date)).slice(0, 5);
@@ -163,8 +158,6 @@ function loadHistory() {
       tableBody.innerHTML = "";
 
       sorted.forEach(item => {
-        console.log("📄 Рендеримо запис:", item);
-
         const tr = document.createElement("tr");
         tr.innerHTML = `
           <td>${formatDate(item.Date)}</td>
@@ -175,7 +168,7 @@ function loadHistory() {
       });
     })
     .catch(err => {
-      log("❌ Помилка завантаження історії");
+      log("Помилка завантаження історії");
       console.error(err);
     });
 }
