@@ -1,0 +1,9 @@
+{
+  "service": "CRM",
+
+  "plugins": {
+    "currency-widget": {
+      "pluginManifest": "app/widget-manifest.json"
+    }
+  }
+}

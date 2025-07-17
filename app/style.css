@@ -1,0 +1,3 @@
+body { padding: 2rem; font-family: sans-serif; }
+.widget-container { max-width: 800px; margin: auto; }
+#log div { font-size: 0.9rem; color: #555; }

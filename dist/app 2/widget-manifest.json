@@ -1,0 +1,18 @@
+{
+    "widget": {
+      "name": "ExchangeRateWidget",
+      "version": "1.0",
+      "api_version": "1.0",
+      "location": {
+        "related_list": {
+          "target_modules": ["Deals"]
+        }
+      },
+      "url": "widget.html",
+      "checksum_required": false
+    },
+    "config": {
+      "platform": "web",
+      "locale": ["en", "uk"]
+    }
+  }

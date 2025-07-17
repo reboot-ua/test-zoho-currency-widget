@@ -1,0 +1,11 @@
+{
+    "title": "USD Exchange Rate",
+    "nbuRate": "NBU Rate:",
+    "dealRate": "Deal Rate:",
+    "difference": "Difference:",
+    "update": "Update Deal Rate",
+    "updating": "Updating...",
+    "updated": "Rate updated!",
+    "error": "Error during update.",
+    "errorFetch": "Failed to fetch exchange rate."
+  }
