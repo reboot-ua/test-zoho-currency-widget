@@ -153,7 +153,7 @@ function loadHistory() {
   ZOHO.CRM.API.searchRecord({
     Entity: "Exchange_Rate_History",
     Type: "criteria",
-    Query: `(Deal:equals:${dealId})`
+    Query: `(Deal:equals:${dealId})` 
   }).then(resp => {
     console.log("📥 Отримані записи історії:", resp);
 
